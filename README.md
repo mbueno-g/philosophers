@@ -13,3 +13,4 @@ The Philosophers proyect introduces the basics of threading a process and discov
 
 ## New concept
 *What is a thread?* 
+A thread is a path of execution within a process. Threads within the same process run in a shared memory space, while processes run in separate memory spaces.
