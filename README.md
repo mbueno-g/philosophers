@@ -19,3 +19,13 @@ The Philosophers proyect introduces the basics of threading a process and discov
 | ``int pthread_mutex_destroy(pthread_mutex_t *mutex)`` | Destroy the mutex object referenced by mutex | Succes: 0 ; Failure: error number | 
 | ``int pthread_mutex_lock(pthread_mutex_t *mutex)`` | Locks the mutex object reference by mutex | Succes: 0 ; Failure: error number |
 | ``int pthread_mutex_unlock(pthread_mutex_t *mutex)`` | Release the mutex object referenced by mutex | Succes: 0 ; Failure: error number |
+
+
+## New concept
+*What is a thread?* 
+A thread, known as a lightweight process, is a path of execution within a process, with its own program counter that keeps track of which instruction to execute next, system registers which hold its current working variables, and a stack which contains the execution history.
+
+Threads within the same process run in a shared memory space, while processes run in separate memory spaces. So if one thread alters a code segment memory item, all other threads see that.
+
+*What is mutex?* 
+Mutex in a binary variable 
