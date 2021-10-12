@@ -1,25 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_libft.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbueno-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/12 10:37:37 by mbueno-g          #+#    #+#             */
+/*   Updated: 2021/10/12 14:01:47 by mbueno-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philo.h"
-
-void	ft_putendl_fd(char *s, int fd)
-{
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (s)
-	{
-		while (*s)
-			ft_putchar_fd(*s++, fd);
-	}
-}
-
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
 
 int	ft_atoi(const char *str)
 {
@@ -44,4 +35,50 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (num * cont);
+}
+
+void    ft_lstadd_back(t_list **lst, t_list *new)
+{
+    if (!*lst)
+        *lst = new;
+    else
+        ft_lstlast(*lst)->next = new;
+}
+
+t_list    *ft_lstlast(t_list *lst)
+{
+    int    len;
+
+    len = ft_lstsize(lst);
+    while (len > 1)
+    {
+        len--;
+        lst = lst->next;
+    }
+    return (lst);
+}
+
+int    ft_lstsize(t_list *lst)
+{
+    int    len;
+
+    len = 0;
+    while (lst)
+    {
+        len++;
+        lst = lst->next;
+    }
+    return (len);
+}
+
+t_list    *ft_lstnew(void *content)
+{
+    t_list    *lst;
+
+    lst = malloc(sizeof(t_list));
+    if (!lst)
+        return (NULL);
+    lst->content = content;
+    lst->next = NULL;
+    return (lst);
 }
