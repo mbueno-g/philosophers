@@ -24,12 +24,14 @@ t_philo	*new_philo(t_data *d, int i)
 {
 	t_philo *new;
 
-	new = malloc(sizeof(t_philo)); //controlar error
+	new = malloc(sizeof(t_philo));
 	if (!new)
 		return(NULL);
 	new->id = i;
 	new->id_thread = 0;
 	new->last_eat = 0;
 	new->data = d;
+	pthread_mutex_init(&new->fork_lock, NULL);
+	pthread_mutex_init(&new->last_eat_lock, NULL);
 	return (new);
 }

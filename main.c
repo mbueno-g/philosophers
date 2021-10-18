@@ -19,6 +19,11 @@ int	init_t_data(t_data *d, char **argv, int argc)
 	d->time_to_sleep = ft_atoi(argv[3]);
 	d->time_to_die = ft_atoi(argv[4]);
 	d->num_eat = -1;
+	d->time_o = ft_time();
+	d->death = 0;
+	d->times_eat = 0;
+	pthread_mutex_init(&d->death_lock, NULL);
+	pthread_mutex_init(&d->num_eat_lock, NULL);
 	if (argc == 6)
 	{
 		d->num_eat = ft_atoi(argv[5]);
@@ -65,11 +70,11 @@ int	main(int argc, char **argv)
 		return(printf("Incorrect number of arguments"));
 	if (init_t_data(&d, argv, argc))
 		return (1);
-	d.time_o = ft_time();
-	philos = NULL;
-	if (init_cycled_t_list(&philos, &d))
+	//philos = NULL;
+	if (init_cycled_t_list(&philos, &d)) //liberar memoria
 		return (1);
-
+	if (init_threads(d, philos)) //liberar memoria
+		return (1);
 	/*while (philos)
 	{
 		aux = philos->content;
