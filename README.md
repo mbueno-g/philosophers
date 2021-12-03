@@ -1,4 +1,9 @@
 # philosophers
+
+WIP 🚧
+
+<!-- 
+
 :books: [Introduction](#introduction)
  
 :world_map: [Concept map](#how-it-works)
@@ -28,4 +33,4 @@ A thread, known as a lightweight process, is a path of execution within a proces
 Threads within the same process run in a shared memory space, while processes run in separate memory spaces. So if one thread alters a code segment memory item, all other threads see that.
 
 *What is mutex?* 
-Mutex in a binary variable 
+Mutex in a binary variable -->
