@@ -23,7 +23,7 @@ int	init_t_data(t_data *d, char **argv, int argc)
 	d->death = 0;
 	d->times_eat = 0;
 	pthread_mutex_init(&d->death_lock, NULL);
-	pthread_mutex_init(&d->num_eat_lock, NULL);
+	pthread_mutex_init(&d->times_eat_lock, NULL);
 	if (argc == 6)
 	{
 		d->num_eat = ft_atoi(argv[5]);
@@ -48,12 +48,13 @@ int	init_cycled_t_list(t_list **philos, t_data *d)
 	t_list	*aux;
 
 	i = 1;
+	aux = NULL;
 	while (i <= d->num_philos)
 	{
 		aux = ft_lstnew(new_philo(d,i));
 		if (!aux || !aux->content)
 			return(printf("Malloc failed\n"));
-		ft_lstadd_back(philos,aux);
+		ft_lstadd_back(philos, aux);
 		i++;
 	}
 	ft_lstlast(*philos)->next = *philos;
@@ -64,23 +65,23 @@ int	main(int argc, char **argv)
 {
 	t_data	d;
 	t_list	*philos;
-	//t_philo *aux;
 	
-	if (argc < 5 || argc > 6)
+	philos = NULL;
+	if (argc != 5 && argc != 6)
 		return(printf("Incorrect number of arguments"));
 	if (init_t_data(&d, argv, argc))
 		return (1);
 	//philos = NULL;
 	if (init_cycled_t_list(&philos, &d)) //liberar memoria
-		return (1);
-	if (init_threads(d, philos)) //liberar memoria
-		return (1);
-	/*while (philos)
 	{
-		aux = philos->content;
-		printf("id %d\n", aux->id);
-		philos = philos->next;
-	}*/
+		ft_lstclear(&philos, free);
+		return (1);
+	}
+	if (init_threads(d, philos)) //liberar memoria
+	{
+		ft_lstclear(&philos, free);
+		return (1);
+	}
 	return (0);
 }
 

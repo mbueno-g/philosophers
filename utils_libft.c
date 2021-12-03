@@ -12,6 +12,25 @@
 
 #include "philo.h"
 
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+	del(lst->content);
+	free(lst);
+}
+
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*a;
+
+	while (*lst)
+	{
+		a = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = a;
+	}	
+}
+
 int	ft_atoi(const char *str)
 {
 	int	i;
@@ -39,7 +58,7 @@ int	ft_atoi(const char *str)
 
 void    ft_lstadd_back(t_list **lst, t_list *new)
 {
-    if (!*lst)
+    if (!(*lst))
         *lst = new;
     else
         ft_lstlast(*lst)->next = new;

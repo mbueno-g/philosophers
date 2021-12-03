@@ -20,6 +20,23 @@ useconds_t	ft_time(void)
 	return (t.tv_sec * 1000 + t.tv_usec / 1000);
 }
 
+int	ft_usleep(useconds_t usec)
+{
+	useconds_t		before;
+	useconds_t		after;
+
+	before = ft_time();
+	after = before;
+	while (after - before < usec)
+	{
+		if (usleep(usec) == -1)
+			return (-1);
+		after = ft_time();
+	}
+	return (0);
+}
+
+
 t_philo	*new_philo(t_data *d, int i)
 {
 	t_philo *new;

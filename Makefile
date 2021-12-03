@@ -12,10 +12,10 @@
 
 NAME = philo
 CC = gcc 
-FLAGS = -Wall -Werror -Wextra #-lpthread
+FLAGS = -pthread -Wall -Werror -Wextra -g3 -fsanitize=address
 RM = rm -f
 
-SRC_M = main.c utils_libft.c utils.c
+SRC_M = main.c utils_libft.c utils.c philo.c
 
 OBJ_M = $(SRC_M:.c=.o)
 
