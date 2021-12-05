@@ -13,6 +13,36 @@
 #include "philo.h"
 
 
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	const char	*str1;
+	const char	*str2;
+
+	str1 = s1;
+	str2 = s2;
+	while (n-- && (*str1 != '\0' || *str2 != '\0'))
+	{
+		if (*str1 != *str2)
+			return ((unsigned char) *str1 - (unsigned char) *str2);
+		str1++;
+		str2++;
+	}
+	return (0);
+}
+
+
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	del(lst->content);

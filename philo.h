@@ -20,7 +20,12 @@
 # include <stdlib.h>
 
 
-#define FORK "has grabbed a fork 🍽"
+#define FORK1 "\033[0;37mhas grabbed a fork 🥢\033[0;39m"
+#define FORK2 "\033[0;37mhas grabbed a fork 🥢 🥢\033[0;39m"
+#define EAT "\033[1;93mis eating 🍣\033[0;39m"
+#define SLEEP "\033[1;32mis sleeping 💤\033[0;39m"
+#define THINK "\033[1;96mis thinking ​💫​\033[0;39m"
+#define DEAD "\033[1;41mis dead ⚰️\033[0;39m"
 
 typedef struct	s_list
 {
@@ -73,5 +78,7 @@ t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(void *content);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+size_t	ft_strlen(const char *str);
 
 #endif
