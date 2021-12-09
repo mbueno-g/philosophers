@@ -15,7 +15,7 @@ CC = gcc
 FLAGS = -pthread -Wall -Werror -Wextra
 RM = rm -f
 
-SRC_M = main.c utils_libft.c utils.c philo.c
+SRC_M = main.c utils_libft.c utils_philo.c philo.c utils_libft_lst.c
 
 OBJ_M = $(SRC_M:.c=.o)
 

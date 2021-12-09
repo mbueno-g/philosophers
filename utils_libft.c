@@ -12,7 +12,6 @@
 
 #include "philo.h"
 
-
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
@@ -42,92 +41,23 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+long long	ft_atoi(const char *str)
 {
-	del(lst->content);
-	free(lst);
-}
+	long long unsigned	num;
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
-{
-	t_list	*a;
-
-	while (*lst)
-	{
-		a = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = a;
-	}	
-}
-
-int	ft_atoi(const char *str)
-{
-	int	i;
-	int	cont;
-	int	num;
-
-	i = 0;
-	cont = 1;
 	num = 0;
-	while ((str[i] == ' ') || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	while ((*str == ' ') || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
 	{
-		if (str[i] == '-')
-			cont = -cont;
-		i++;
+		num = num * 10 + *str - '0';
+		str++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num = num * 10 + str[i] - '0';
-		i++;
-	}
-	return (num * cont);
-}
-
-void    ft_lstadd_back(t_list **lst, t_list *new)
-{
-    if (!(*lst))
-        *lst = new;
-    else
-        ft_lstlast(*lst)->next = new;
-}
-
-t_list    *ft_lstlast(t_list *lst)
-{
-    int    len;
-
-    len = ft_lstsize(lst);
-    while (len > 1)
-    {
-        len--;
-        lst = lst->next;
-    }
-    return (lst);
-}
-
-int    ft_lstsize(t_list *lst)
-{
-    int    len;
-
-    len = 0;
-    while (lst)
-    {
-        len++;
-        lst = lst->next;
-    }
-    return (len);
-}
-
-t_list    *ft_lstnew(void *content)
-{
-    t_list    *lst;
-
-    lst = malloc(sizeof(t_list));
-    if (!lst)
-        return (NULL);
-    lst->content = content;
-    lst->next = NULL;
-    return (lst);
+	while ((*str == ' ') || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str)
+		return (-1)
+	return (num);
 }

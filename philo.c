@@ -19,10 +19,8 @@ int	print_status(t_list *philo, char *status)
 	return (0);
 }
 
-int	check_philos(t_list	*philos)
+int	check_philos(t_list	*philos, t_philo *aux)
 {
-	t_philo	*aux;
-
 	while (1)
 	{
 		aux = philos->content;
@@ -49,6 +47,24 @@ int	check_philos(t_list	*philos)
 	}
 }
 
+void	philo_actions(t_list *philo, t_philo *fork1, t_philo *fork2)
+{
+	pthread_mutex_lock(&fork1->fork_lock);
+	print_status(philo, FORK1);
+	pthread_mutex_lock(&fork2->fork_lock);
+	print_status(philo, FORK2);
+	pthread_mutex_lock(&fork1->last_eat_lock);
+	fork1->last_eat = ft_time() - fork1->data->time_o;
+	pthread_mutex_unlock(&fork1->last_eat_lock);
+	print_status(philo, EAT);
+	ft_usleep(fork1->data->time_to_eat);
+	print_status(philo, SLEEP);
+	pthread_mutex_unlock(&fork2->fork_lock);
+	pthread_mutex_unlock(&fork1->fork_lock);
+	ft_usleep(fork1->data->time_to_sleep);
+	print_status(philo, THINK);
+}
+
 void	*living_philo(void *philo)
 {
 	t_philo	*fork1;
@@ -61,22 +77,7 @@ void	*living_philo(void *philo)
 	ft_usleep(!(fork1->id % 2) * 2);
 	while ((++i < fork1->data->num_eat || fork1->data->num_eat == -1) \
 		&& !fork1->data->death)
-	{
-		pthread_mutex_lock(&fork1->fork_lock);
-		print_status((t_list *)philo, FORK1);
-		pthread_mutex_lock(&fork2->fork_lock);
-		print_status((t_list *)philo, FORK2);
-		pthread_mutex_lock(&fork1->last_eat_lock);
-		fork1->last_eat = ft_time() - fork1->data->time_o;
-		pthread_mutex_unlock(&fork1->last_eat_lock);
-		print_status((t_list *)philo, EAT);
-		ft_usleep(fork1->data->time_to_eat);
-		print_status((t_list *)philo, SLEEP);
-		pthread_mutex_unlock(&fork2->fork_lock);
-		pthread_mutex_unlock(&fork1->fork_lock);
-		ft_usleep(fork1->data->time_to_sleep);
-		print_status((t_list *)philo, THINK);
-	}
+		philo_actions((t_list *)philo, fork1, fork2);
 	return (NULL);
 }
 
@@ -84,6 +85,7 @@ int	init_threads(t_data d, t_list *philos)
 {
 	t_list	*aux;
 	t_philo	*p;
+	t_philo	*aux_philo;
 	int		i;
 
 	i = 0;
@@ -99,6 +101,7 @@ int	init_threads(t_data d, t_list *philos)
 		aux = aux->next;
 		i++;
 	}
-	check_philos(philos);
+	aux_philo = NULL;
+	check_philos(philos, aux_philo);
 	return (0);
 }
