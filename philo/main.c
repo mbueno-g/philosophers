@@ -6,7 +6,7 @@
 /*   By: mbueno-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 10:37:25 by mbueno-g          #+#    #+#             */
-/*   Updated: 2021/12/10 10:47:15 by mbueno-g         ###   ########.fr       */
+/*   Updated: 2021/12/10 11:19:15 by mbueno-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	init_t_data(t_data *d, char **argv, int argc)
 		if (d->num_eat < 0)
 			return (printf("Incorrect number of times to eat\n"));
 	}
-	if (d->num_philos <= 0)
+	if (d->num_philos <= 0 || d->num_philos > 200)
 		return (printf("Invalid number of philos\n"));
 	if (d->time_to_eat < 0)
 		return (printf("Incorrect time to eat\n"));
