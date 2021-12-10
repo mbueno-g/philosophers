@@ -17,8 +17,9 @@ The simulation stops when the philosophers have eaten n times or when a philosop
 
 Philosophers are numbered from 1 to *N*. This way philosopher number *k* is seated between philosopher *k-1* and philosopher *k+1*.
  
- 
-
+ <div align=center>
+<img src="https://user-images.githubusercontent.com/71781441/145614999-38c05b91-04fa-4ecc-afb2-9819502da815.jpg" height="350">
+</div>
 
 
 This program takes the following arguments:
