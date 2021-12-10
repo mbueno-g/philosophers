@@ -6,7 +6,7 @@
 /*   By: mbueno-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:26:29 by mbueno-g          #+#    #+#             */
-/*   Updated: 2021/10/12 17:01:18 by mbueno-g         ###   ########.fr       */
+/*   Updated: 2021/12/10 10:35:44 by mbueno-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 useconds_t	ft_time(void)
 {
-	struct timeval t;
+	struct timeval	t;
 
 	gettimeofday(&t, NULL);
 	return (t.tv_sec * 1000 + t.tv_usec / 1000);
@@ -36,14 +36,13 @@ int	ft_usleep(useconds_t usec)
 	return (0);
 }
 
-
 t_philo	*new_philo(t_data *d, int i)
 {
-	t_philo *new;
+	t_philo	*new;
 
 	new = malloc(sizeof(t_philo));
 	if (!new)
-		return(NULL);
+		return (NULL);
 	new->id = i;
 	new->id_thread = 0;
 	new->last_eat = 0;

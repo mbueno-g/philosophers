@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbueno-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/10 10:29:55 by mbueno-g          #+#    #+#             */
+/*   Updated: 2021/12/10 10:45:05 by mbueno-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philo.h"
 
@@ -11,7 +22,7 @@ int	print_status(t_list *philo, char *status)
 	pthread_mutex_lock(&philos->data->times_eat_lock);
 	if (philos->data->num_eat * philos->data->num_philos \
 		!= philos->data->times_eat)
-		printf("\033[1;39m{%06u\033[0;39m}  %03d  ➤ \033[0;39m%s\n", \
+		printf("\033[1;39m{%06u\033[0;39m} ➤  %03d \033[0;39m%s\n", \
 			t, philos->id, status);
 	if (!ft_strncmp(status, EAT, ft_strlen(status)))
 		philos->data->times_eat++;

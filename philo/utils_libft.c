@@ -6,7 +6,7 @@
 /*   By: mbueno-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 10:37:37 by mbueno-g          #+#    #+#             */
-/*   Updated: 2021/10/12 14:01:47 by mbueno-g         ###   ########.fr       */
+/*   Updated: 2021/12/10 10:36:11 by mbueno-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ long long	ft_atoi(const char *str)
 	while ((*str == ' ') || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str)
-		return (-1)
+		return (-1);
 	return (num);
 }

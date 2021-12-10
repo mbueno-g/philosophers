@@ -6,7 +6,7 @@
 /*   By: mbueno-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 10:37:25 by mbueno-g          #+#    #+#             */
-/*   Updated: 2021/10/12 17:01:15 by mbueno-g         ###   ########.fr       */
+/*   Updated: 2021/12/10 10:47:15 by mbueno-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int	init_t_data(t_data *d, char **argv, int argc)
 			return (printf("Incorrect number of times to eat\n"));
 	}
 	if (d->num_philos <= 0)
-		return (printf("Invalid number of philos"));
+		return (printf("Invalid number of philos\n"));
 	if (d->time_to_eat < 0)
-		return (printf("Incorrect time to eat"));
+		return (printf("Incorrect time to eat\n"));
 	if (d->time_to_sleep < 0)
-		return (printf("Incorrect time to sleep"));
+		return (printf("Incorrect time to sleep\n"));
 	if (d->time_to_die < 0)
-		return (printf("Invalid arguments"));
+		return (printf("Invalid arguments\n"));
 	return (0);
 }
 
@@ -67,7 +67,7 @@ int	main(int argc, char **argv)
 
 	philos = NULL;
 	if (argc != 5 && argc != 6)
-		return (printf("Incorrect number of arguments"));
+		return (printf("Incorrect number of arguments\n"));
 	if (init_t_data(&d, argv, argc))
 		return (1);
 	if (init_cycled_t_list(&philos, &d))
