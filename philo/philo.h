@@ -19,8 +19,8 @@
 # include <sys/time.h>
 # include <stdlib.h>
 
-# define FORK1 "\033[0;37mhas grabbed a fork 🥢\033[0;39m"
-# define FORK2 "\033[0;37mhas grabbed a fork 🥢 🥢\033[0;39m"
+# define FORK1 "\033[0;37mhas taken a fork 🥢\033[0;39m"
+# define FORK2 "\033[0;37mhas taken a fork 🥢 🥢\033[0;39m"
 # define EAT "\033[1;93mis eating 🍣\033[0;39m"
 # define SLEEP "\033[1;32mis sleeping 💤\033[0;39m"
 # define THINK "\033[1;96mis thinking ​💫​\033[0;39m"
