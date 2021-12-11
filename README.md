@@ -124,3 +124,20 @@ Thread 2 finished working
 Thread 2 started working
 Thread 2 finished working
 ```
+
+## Step by step
+
+:footprints: Step 1: Parsing arguments and creating structs
+After parsing all arguments and initializing commun mutex such as death_lock and times_eat_lock, all this data is stored in a `t_data` struct.
+Afterwards, a `t_philo` struct is created for every philosopher and they are linked in a cycled linked list.
+
+:footprints: Step 2: Initialize threads
+A thread is created per each philosopher and it starts execution by invoking `living_philo()` function. In this function every thread starts taking forks, eating, sleeping and thinking.
+
+:footprints: Step 3: Checking philos
+In the meanwhile, the main thread is checking if a philosopher has died or if they have already eaten n times. If any of these conditions is met then the program strops, otherwise the program keeps running. 
+
+
+
+
+
