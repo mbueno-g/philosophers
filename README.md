@@ -1,8 +1,5 @@
 # philosophers
 
-WIP 🚧
-
-
 :books: [Introduction](#introduction) : Dining philosopher problem
  
 :collision: [New concept](#new-concept): Thread + mutex
